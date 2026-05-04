@@ -285,6 +285,9 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:1
     </div>
   </div>
   <div style="margin-top:20px;font-size:12px;color:rgba(255,255,255,0.5);text-align:center;line-height:1.6">내 데이터는 안전하게 저장되고<br>어디서든 동기화됩니다</div>
+  <button type="button" onclick="openTranslate()" style="margin-top:16px;background:rgba(255,255,255,0.15);border:none;border-radius:20px;padding:8px 18px;color:white;font-size:13px;font-family:var(--sans);font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px">
+    🌐 Translate this app
+  </button>
 </div>
 
 <!-- 비밀번호 재설정 화면 -->
@@ -535,6 +538,9 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:1
     </div>
 
     <div style="margin-top:16px;padding-bottom:8px">
+      <button type="button" onclick="openTranslate()" style="width:100%;background:none;border:1.5px solid rgba(124,58,237,0.4);border-radius:16px;padding:14px;font-family:var(--sans);font-size:15px;font-weight:600;color:var(--purple);cursor:pointer;margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:8px">
+        🌐 Translate / 언어 번역
+      </button>
       <button type="button" onclick="doLogout()" style="width:100%;background:none;border:1.5px solid var(--red);border-radius:16px;padding:16px;font-family:var(--sans);font-size:15px;font-weight:700;color:var(--red);cursor:pointer">
         로그아웃
       </button>
@@ -586,6 +592,11 @@ function showApp(){
   document.getElementById('app').style.display='block';
   const name=USER?.user_metadata?.full_name||USER?.email?.split('@')[0]||'';
   document.getElementById('user-name').textContent=name+'님';
+}
+
+function openTranslate(){
+  const url=encodeURIComponent(window.location.href);
+  window.open(`https://translate.google.com/translate?sl=ko&tl=en&u=${url}`,'_blank');
 }
 
 function togglePw(inputId, btn){
